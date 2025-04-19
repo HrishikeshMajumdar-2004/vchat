@@ -196,11 +196,21 @@ const MeetingTypeList = () => {
           }
         
           try {
-            const url = new URL(values.link.startsWith("http") ? values.link : `${process.env.NEXT_PUBLIC_BASE_URL}/${values.link}`);
+            // Automatically add https:// if the link doesn't start with http:// or https://
+            let meetingLink = values.link.trim();
+            if (!meetingLink.startsWith("http://") && !meetingLink.startsWith("https://")) {
+              meetingLink = `https://${meetingLink}`;
+            }
+        
+            const url = new URL(meetingLink);
+        
+            // Check if the URL has the /meeting/ path
             if (!url.pathname.startsWith("/meeting/")) {
               toast("Invalid meeting link");
               return;
             }
+        
+            // Navigate to the meeting page
             router.push(url.pathname);
           } catch {
             toast("Invalid URL format");
