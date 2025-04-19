@@ -1,11 +1,27 @@
+'use client';
+
 import MeetingTypeList from '@/components/MeetingTypeList';
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 
 const Home = () => {
-  const now = new Date();
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
 
-  const time = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-  const date = (new Intl.DateTimeFormat('en-IN', { dateStyle: 'full' })).format(now);
+  useEffect(() => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Asia/Kolkata',
+    });
+    const dateString = new Intl.DateTimeFormat('en-IN', {
+      dateStyle: 'full',
+      timeZone: 'Asia/Kolkata',
+    }).format(now);
+
+    setTime(timeString);
+    setDate(dateString);
+  }, []);
 
   return (
     <section className="flex size-full flex-col gap-5 text-white">
@@ -17,9 +33,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <MeetingTypeList/>
+      <MeetingTypeList />
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
