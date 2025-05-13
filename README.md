@@ -27,6 +27,7 @@ When a user wants to join a meeting using a link, a popup appears asking them to
 
 
 https://github.com/user-attachments/assets/036392e2-807f-4c9d-b5ca-b8850ac53a71
+
 In the video above, a user schedules a meeting and copies the generated meeting link to their clipboard. The user then joins the meeting by selecting the "Join meeting via invitation link" option and pasting the copied link.
 As the meeting host, the user can share this same link with others. Invitees can join the meeting by pasting the shared link into the "Join meeting via invitation link" field, allowing them to connect directly to the session.
 
